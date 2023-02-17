@@ -113,3 +113,5 @@ export default function Home() {
     </>
   )
 }
+
+export function getServerSideProps() {}
