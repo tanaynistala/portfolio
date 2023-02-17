@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import photos from "@/pages/api/photos.json"
 
-type Photo = {
+export type Photo = {
   id: number
   title: string
   location: string

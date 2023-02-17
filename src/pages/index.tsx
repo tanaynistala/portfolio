@@ -1,15 +1,16 @@
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import { useMemo } from "react"
+import { GetServerSideProps } from "next"
+
 import photos from "@/pages/api/photos.json"
+import { Photo } from "./gallery"
 
-export default function Home() {
-  const randomPhoto = useMemo(
-    () => photos[Math.floor(Math.random() * photos.length)],
-    []
-  )
+type Props = {
+  randomPhoto: Photo
+}
 
+export default function Home({ randomPhoto }: Props) {
   return (
     <>
       <Head>
@@ -114,4 +115,10 @@ export default function Home() {
   )
 }
 
-export function getServerSideProps() {}
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: {
+      randomPhoto: photos[Math.floor(Math.random() * photos.length)],
+    },
+  }
+}
