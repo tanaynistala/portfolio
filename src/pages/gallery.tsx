@@ -3,6 +3,13 @@ import Image from "next/image"
 import Link from "next/link"
 import photos from "@/pages/api/photos.json"
 
+type Photo = {
+  id: number
+  title: string
+  location: string
+  date: string
+}
+
 export default function Home() {
   return (
     <>
@@ -47,34 +54,40 @@ export default function Home() {
             >
               Pixelmator Pro
             </Link>
-            .
+            . Click any photo to view it in full resolution.
           </p>
         </div>
 
         <div className="mt-8">
-          {photos.map((photo) => {
-            const date = new Date(photo.date)
-            return (
-              <div key={photo.id}>
-                <Link href={`photos/photo${photo.id}.png`}>
-                  <img
-                    src={`photos/photo${photo.id}.png`}
-                    alt={photo.title}
-                    className="mt-8 mb-2"
-                  />
-                </Link>
-                <h4>{photo.title}</h4>
-                <p className="opacity-50">
-                  {photo.location} &middot;{" "}
-                  {date.toLocaleString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
-            )
-          })}
+          {photos
+            .sort((a, b) => {
+              return Date.parse(b.date) - Date.parse(a.date)
+            })
+            .map((photo) => {
+              const date = new Date(photo.date)
+              return (
+                <div key={photo.id}>
+                  <Link href={`photos/photo${photo.id}.png`}>
+                    <Image
+                      src={`/photos/photo${photo.id}.png`}
+                      alt={photo.title}
+                      width={512}
+                      height={512}
+                      className="mt-8 mb-2"
+                    />
+                    <h4>{photo.title}</h4>
+                    <p className="opacity-50">
+                      {photo.location} &middot;{" "}
+                      {date.toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
+                  </Link>
+                </div>
+              )
+            })}
         </div>
       </main>
     </>

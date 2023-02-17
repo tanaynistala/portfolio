@@ -1,10 +1,14 @@
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
+import { useMemo } from "react"
 import photos from "@/pages/api/photos.json"
 
 export default function Home() {
-  const randomPhoto = photos[Math.floor(Math.random() * photos.length)]
+  const randomPhoto = useMemo(
+    () => photos[Math.floor(Math.random() * photos.length)],
+    []
+  )
 
   return (
     <>
@@ -38,9 +42,11 @@ export default function Home() {
             <Link href="/gallery" className="opacity-50 hover:opacity-100">
               Gallery →
             </Link>
-            <img
-              src={`photos/photo${randomPhoto.id}.png`}
+            <Image
+              src={`/photos/photo${randomPhoto.id}.png`}
               alt={randomPhoto.title}
+              width={512}
+              height={512}
               className="mt-2"
             />
           </div>
