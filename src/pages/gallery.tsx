@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Tanay Nistala</title>
+        <title>Tanay Nistala ∙ Gallery</title>
         <meta name="description" content="Photo gallery" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
