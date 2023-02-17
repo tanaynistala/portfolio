@@ -1,50 +1,29 @@
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import styles from "@/styles/Home.module.css"
+import photos from "@/pages/api/photos.json"
 
 export default function Home() {
+  const randomPhoto = photos[Math.floor(Math.random() * photos.length)]
+
   return (
     <>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Tanay Nistala's portfolio website" />
+        <title>Tanay Nistala</title>
+        <meta name="description" content="Portfolio home" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <div className="md:max-w-lg md:my-16 mx-auto p-8 font-light">
           <div>
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_1_2)">
-                <rect width="24" height="24" rx="12" fill="white" />
-                <path
-                  d="M0 24L7 21L4.5 12.5C2 2 16 -1.00001 21 10.5C20.0324 11.0503 19.3739 11.1682 18 11L17.3158 17.5M24 24L17 20.5L17.3158 17.5M17.3158 17.5L15.5 16.5L14 18L12.5 17L10.5 18"
-                  stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M13.5 11.5C13.5 12.0523 13.0523 12.5 12.5 12.5C11.9477 12.5 11.5 12.0523 11.5 11.5C11.5 10.9477 11.9477 10.5 12.5 10.5C13.0523 10.5 13.5 10.9477 13.5 11.5Z"
-                  fill="black"
-                />
-                <path
-                  d="M17 10.5C17 11.0523 16.5523 11.5 16 11.5C15.4477 11.5 15 11.0523 15 10.5C15 9.94772 15.4477 9.5 16 9.5C16.5523 9.5 17 9.94772 17 10.5Z"
-                  fill="black"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_1_2">
-                  <rect width="24" height="24" rx="12" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            <Image
+              src="logo.svg"
+              alt="Website logo"
+              width={48}
+              height={48}
+              className="rounded-full border-2 border-black"
+            />
             <h1 className="mt-8">
               Tanay Nistala ∙ <span className="opacity-50">Boston, MA</span>
             </h1>
@@ -53,6 +32,17 @@ export default function Home() {
               robotics stuff, and occasionally build things on the web or take
               photos. On weekends, I play in and organize GeoGuessr tournaments.
             </p>
+          </div>
+
+          <div className="mt-8 mb-2">
+            <Link href="/gallery" className="opacity-50 hover:opacity-100">
+              Gallery →
+            </Link>
+            <img
+              src={`photos/photo${randomPhoto.id}.png`}
+              alt={randomPhoto.title}
+              className="mt-2"
+            />
           </div>
 
           <div className="mt-8 gap-4 flex justify-between">
