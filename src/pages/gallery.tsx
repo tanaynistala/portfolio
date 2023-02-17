@@ -4,12 +4,6 @@ import Link from "next/link"
 import photos from "@/pages/api/photos.json"
 
 export default function Home() {
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }
-
   return (
     <>
       <Head>
@@ -35,8 +29,9 @@ export default function Home() {
             Gallery
           </h1>
           <p className="opacity-50 mt-2 leading-relaxed">
-            This is a collection of some of my favorite photos I've taken. All
-            on iPhones, from the 5s up to the 14 Pro. Most photos are shot in{" "}
+            This is a collection of some of my favorite photos I&apos;ve taken.
+            All on iPhones, from the 5s up to the 14 Pro. Most photos are shot
+            in{" "}
             <Link
               href="https://lux.camera/"
               className="underline"
@@ -71,7 +66,11 @@ export default function Home() {
                 <h4>{photo.title}</h4>
                 <p className="opacity-50">
                   {photo.location} &middot;{" "}
-                  {date.toLocaleString("en-US", options)}
+                  {date.toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
                 </p>
               </div>
             )
