@@ -86,7 +86,7 @@ export default function Home({ randomPhoto }: Props) {
 
             <div>
               <Link
-                href="mailto:t.nistala@icloud.com"
+                href="mailto:hi@tanaynistala.com"
                 className="opacity-50 hover:opacity-100"
                 target="_blank"
               >
