@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
@@ -11,6 +12,9 @@ export type Photo = {
 }
 
 export default function Home() {
+
+  const [ numVisiblePhotos, showPhotos ] = useState(10);
+
   return (
     <>
       <Head>
@@ -63,6 +67,7 @@ export default function Home() {
             .sort((a, b) => {
               return Date.parse(b.date) - Date.parse(a.date)
             })
+            .slice(0, numVisiblePhotos)
             .map((photo) => {
               const date = new Date(photo.date)
               return (
@@ -89,6 +94,12 @@ export default function Home() {
                 </div>
               )
             })}
+
+          <button className="opacity-50 hover:opacity-100 w-full mx-auto mt-8" onClick={() => {
+            showPhotos(Math.min(numVisiblePhotos+10, photos.length))
+          }}>
+            Show More
+          </button>
         </div>
       </main>
     </>
