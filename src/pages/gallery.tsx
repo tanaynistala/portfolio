@@ -95,7 +95,7 @@ export default function Home() {
               )
             })}
 
-          <button className="opacity-50 hover:opacity-100 w-full mx-auto mt-8" onClick={() => {
+          <button className="font-medium opacity-50 hover:opacity-100 w-full mx-auto mt-8" onClick={() => {
             showPhotos(Math.min(numVisiblePhotos+10, photos.length))
           }}>
             Show More
