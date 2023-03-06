@@ -70,7 +70,8 @@ export default function Home() {
                   <Link href={`photos/photo${photo.id}.png`}>
                     <Image
                       src={`/photos/photo${photo.id}.png`}
-                      alt={photo.title}
+                      title={photo.title}
+                      alt={`${photo.title}, from ${photo.location}`}
                       width={512}
                       height={512}
                       className="mt-8 mb-2"

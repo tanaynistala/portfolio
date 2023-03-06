@@ -45,7 +45,8 @@ export default function Home({ randomPhoto }: Props) {
             </Link>
             <Image
               src={`/photos/photo${randomPhoto.id}.png`}
-              alt={randomPhoto.title}
+              title={randomPhoto.title}
+              alt={`${randomPhoto.title}, from ${randomPhoto.location}`}
               width={512}
               height={512}
               className="mt-2"
