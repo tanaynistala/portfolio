@@ -13,6 +13,11 @@ export type Photo = {
 
 export default function Home() {
   const [numVisiblePhotos, showPhotos] = useState(10);
+  const [useGrid, setViewType] = useState(false);
+
+  function toggleViewType() {
+    setViewType(!useGrid);
+  }
 
   return (
     <>
@@ -22,8 +27,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="md:max-w-lg md:my-16 mx-auto p-8 font-light">
-        <div>
+      <main
+        className={`md:my-16 mx-auto p-8 font-light ${
+          useGrid ? "md:max-w-3xl" : "md:max-w-lg"
+        }`}
+      >
+        <div className="md:max-w-lg mx-auto">
           <Image
             src="logo.svg"
             alt="Website logo"
@@ -61,7 +70,20 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-8">
+        <button
+          onClick={toggleViewType}
+          className="mt-4 flex mx-auto opacity-50 hover:opacity-100"
+        >
+          {useGrid ? "List View" : "Grid View"}
+        </button>
+
+        <div
+          className={`mt-8 ${
+            useGrid
+              ? "grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+              : "flex flex-col gap-8"
+          }`}
+        >
           {photos
             .sort((a, b) => {
               return Date.parse(b.date) - Date.parse(a.date);
@@ -70,7 +92,7 @@ export default function Home() {
             .map((photo) => {
               const date = new Date(photo.date);
               return (
-                <div key={photo.id}>
+                <div key={photo.id} className="mx-auto">
                   <Link href={`photos/photo${photo.id}.png`}>
                     <Image
                       src={`/photos/photo${photo.id}.png`}
@@ -78,7 +100,7 @@ export default function Home() {
                       alt={`${photo.title}, from ${photo.location}`}
                       width={512}
                       height={512}
-                      className="mt-8 mb-2"
+                      className="mb-2"
                     />
                     <h4>{photo.title}</h4>
                     <p className="opacity-50">

@@ -48,14 +48,14 @@ export default function Home({ randomPhoto }: Props) {
                 src={`/photos/photo${randomPhoto.id}.png`}
                 title={randomPhoto.title}
                 alt={`${randomPhoto.title}, from ${randomPhoto.location}`}
-                width={512}
+                width={1024}
                 height={512}
                 className="mt-2"
               />
             </Link>
           </div>
 
-          <div className="mt-8 gap-4 flex justify-between">
+          <div className="mt-8 flex justify-between">
             <div className="flex gap-4">
               <Link
                 href="https://github.com/tanaynistala"
@@ -87,15 +87,13 @@ export default function Home({ randomPhoto }: Props) {
               </Link>
             </div>
 
-            <div>
-              <Link
-                href="mailto:hi@tanaynistala.com"
-                className="opacity-50 hover:opacity-100"
-                target="_blank"
-              >
-                Email
-              </Link>
-            </div>
+            <Link
+              href="mailto:hi@tanaynistala.com"
+              className="opacity-50 hover:opacity-100"
+              target="_blank"
+            >
+              Email
+            </Link>
           </div>
 
           <div>
