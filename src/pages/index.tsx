@@ -1,14 +1,14 @@
-import Head from "next/head"
-import Image from "next/image"
-import Link from "next/link"
-import { GetServerSideProps } from "next"
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { GetServerSideProps } from "next";
 
-import photos from "@/pages/api/photos.json"
-import { Photo } from "./gallery"
+import photos from "@/pages/api/photos.json";
+import { Photo } from "./gallery";
 
 type Props = {
-  randomPhoto: Photo
-}
+  randomPhoto: Photo;
+};
 
 export default function Home({ randomPhoto }: Props) {
   return (
@@ -40,17 +40,19 @@ export default function Home({ randomPhoto }: Props) {
           </div>
 
           <div className="mt-8 mb-2">
-            <Link href="/gallery" className="opacity-50 hover:opacity-100">
-              Gallery →
+            <Link href="/gallery" className="group">
+              <span className="opacity-50 group-hover:opacity-100">
+                Gallery →
+              </span>
+              <Image
+                src={`/photos/photo${randomPhoto.id}.png`}
+                title={randomPhoto.title}
+                alt={`${randomPhoto.title}, from ${randomPhoto.location}`}
+                width={512}
+                height={512}
+                className="mt-2"
+              />
             </Link>
-            <Image
-              src={`/photos/photo${randomPhoto.id}.png`}
-              title={randomPhoto.title}
-              alt={`${randomPhoto.title}, from ${randomPhoto.location}`}
-              width={512}
-              height={512}
-              className="mt-2"
-            />
           </div>
 
           <div className="mt-8 gap-4 flex justify-between">
@@ -113,7 +115,7 @@ export default function Home({ randomPhoto }: Props) {
         </div>
       </main>
     </>
-  )
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -121,5 +123,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       randomPhoto: photos[Math.floor(Math.random() * photos.length)],
     },
-  }
-}
+  };
+};
