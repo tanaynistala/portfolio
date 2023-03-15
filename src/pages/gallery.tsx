@@ -27,12 +27,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main
-        className={`md:my-16 mx-auto p-8 font-light ${
-          useGrid ? "md:max-w-3xl" : "md:max-w-lg"
-        }`}
-      >
-        <div className="md:max-w-lg mx-auto">
+      <main className="p-8 font-light">
+        <div className="md:max-w-lg md:my-16 mx-auto">
           <Image
             src="logo.svg"
             alt="Website logo"
@@ -72,16 +68,16 @@ export default function Home() {
 
         <button
           onClick={toggleViewType}
-          className="mt-4 flex mx-auto opacity-50 hover:opacity-100"
+          className="mt-4 px-8 flex mx-auto opacity-50 hover:opacity-100"
         >
           {useGrid ? "List View" : "Grid View"}
         </button>
 
         <div
-          className={`mt-8 ${
+          className={`mt-8 mx-auto gap-8 ${
             useGrid
-              ? "grid sm:grid-cols-2 md:grid-cols-3 gap-4"
-              : "flex flex-col gap-8"
+              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4"
+              : "flex flex-col"
           }`}
         >
           {photos
@@ -116,7 +112,7 @@ export default function Home() {
               );
             })}
 
-          <div className="w-full mt-8 flex justify-center">
+          <div className="w-full mt-8 flex justify-center col-span-3">
             {numVisiblePhotos < photos.length && (
               <button
                 className="opacity-50 hover:opacity-100 flex flex-col items-center"
