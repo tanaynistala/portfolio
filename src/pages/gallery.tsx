@@ -11,7 +11,7 @@ export type Photo = {
   date: string;
 };
 
-export default function Home() {
+export default function Gallery() {
   const [numVisiblePhotos, showPhotos] = useState(10);
   const [useGrid, setViewType] = useState(false);
 
