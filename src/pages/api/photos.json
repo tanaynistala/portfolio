@@ -724,5 +724,35 @@
     "title": "Spring Sunset",
     "location": "Somerville, MA",
     "date": "2023-03-08"
-  }
+  },
+  {
+    "id": 122,
+    "title": "Main Street",
+    "location": "Darien, CT",
+    "date": "2023-03-17"
+  },
+  {
+    "id": 123,
+    "title": "Waterfront Walk",
+    "location": "Niantic, CT",
+    "date": "2023-03-17"
+  },
+  {
+    "id": 124,
+    "title": "Fishers Island Ferry",
+    "location": "New London, CT",
+    "date": "2023-03-17"
+  },
+  {
+    "id": 125,
+    "title": "Mystic Docks",
+    "location": "Mystic, CT",
+    "date": "2023-03-17"
+  },
+  {
+    "id": 126,
+    "title": "Stationary",
+    "location": "Westwood, MA",
+    "date": "2023-03-17"
+  } 
 ]
