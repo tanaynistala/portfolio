@@ -86,7 +86,8 @@ export default function Gallery() {
             })
             .slice(0, numVisiblePhotos)
             .map((photo) => {
-              const date = new Date(photo.date);
+              var date = new Date(photo.date);
+              date.setHours(date.getHours() + 12);
               return (
                 <div key={photo.id} className="mx-auto">
                   <Link href={`photos/photo${photo.id}.png`}>
